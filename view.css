@@ -1,0 +1,34 @@
+@CHARSET "ISO-8859-1";
+#filters {
+	margin-bottom: 10px;
+}
+#items {
+	clear: both;
+	list-display-style: none;
+	margin: 0px;
+	padding: 0px;
+}
+.entry {
+	display: block;
+	margin: 0px;
+	padding: 0px;
+	margin-bottom: 10px;
+	padding: 5px;
+}
+.file {
+	display: block;
+	float: left;
+}
+.function {
+	display: block;
+	float: right;
+}
+.message {
+	clear: both;
+}
+.function_filter {
+	float: right;
+}
+.file_filter {
+	float: left;
+}

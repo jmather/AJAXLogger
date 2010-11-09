@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>AJAXLogger</title>
+<link rel="stylesheet" href="smoothness/jquery-ui-1.7.2.custom.css" type="text/css" media="screen" />
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/jquery-ui.min.js"></script>
+<script src="js/jquery.autocomplete.min.js"></script>
+<script src="js/jquery.ajaxmanager.js"></script>
+<script src="js/jquery.statusbox.js"></script>
+<script src="js/ajaxlogger.methods.js"></script>
+<script src="js/ajaxlogger.dialogs.js"></script>
+<script type="text/javascript">
+function openForm()
+{
+	var p = {};
+	p['status'] = 0;
+	p['toolbar'] = 0;
+	p['location'] = 0;
+	p['menubar'] = 0;
+	p['directories'] = 0;
+	p['resizable'] = 0;
+	p['scrollbars'] = 0;
+	p['height'] = 500;
+	p['width'] = 500;
+	var params = '';
+	var par = Array();
+	for (var i in p)
+		par[par.length] = i+'='+p[i];
+	params = par.join(',');
+	window.open('view.html', 'AJAXLogger', params); 
+}
+function markTestEntry()
+{
+	$('#status').statusbox('display', 'Marking...');
+	$.get('ui.php', {task: 'test',text:prompt('What to post?')}, markTestEntryCallback, 'text');
+}
+function markTestEntryCallback(res)
+{
+	// do nothing
+	$('#status').statusbox('display', 'Marked.');
+}
+$(function(){
+	$('#status').statusbox();
+});
+</script>
+</head>
+<body>
+	<div class="overlay">
+		<p id="status"></p>
+		<p>Click "Open Logger Window" to continue.</p>
+		<button onclick="openForm();">Open Logger Window</button><br />
+		<button onclick="markTestEntry();">Mark Test Entry</button>
+	</div>
+</body>
+</html>
